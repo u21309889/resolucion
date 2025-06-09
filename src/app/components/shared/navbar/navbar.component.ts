@@ -3,6 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-navbar',
   imports: [
@@ -15,5 +17,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  constructor(private router: Router) {}
+
+  logout() {
+    localStorage.removeItem('isLoggedIn');
+    this.router.navigate(['/login']);
+  }
 
 }
